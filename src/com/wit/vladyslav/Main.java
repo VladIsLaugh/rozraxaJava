@@ -15,15 +15,15 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-       FileInputStream fis = new FileInputStream("D:/Рабочий стол/Banking.xls"); // читаю
-        Workbook wbi = new HSSFWorkbook(fis);          //обэкт для читання
+        Main b=new Main();
+        b.read();
         //Workbook wbo = new HSSFWorkbook();                 // обэкт для запису
 
 
         //Sheet write = wbo.createSheet("моя вкладка");// створюэмо вкладка
 
-        double res = wbi.getSheetAt(0).getRow(2).getCell(1).getNumericCellValue();
-        System.out.println("Вдсоток в приват банку - " + res);
+        //double res = wbi.getSheetAt(0).getRow(2).getCell(1).getNumericCellValue();
+        //System.out.println("Вдсоток в приват банку - " + res);
 
         //Row frow1 = write.createRow(0);      //обираэм рядок для запису
         //Cell fcell1 = frow1.createCell(0);  //обираэмо комырку для запису
@@ -35,10 +35,17 @@ public class Main {
 
         //wbo.write(fos);
         //fos.close();
-        fis.close();
+
     }
 
+    private static void read() throws IOException {
+        FileInputStream fis = new FileInputStream("D:/Рабочий стол/Banking.xls"); // читаю
+        Workbook wbi = new HSSFWorkbook(fis);          //обэкт для читання
+        double res = wbi.getSheetAt(0).getRow(2).getCell(1).getNumericCellValue();
+        System.out.println("Вдсоток в приват банку - " + res);
+        fis.close();
 
+    }
 }
 
 
