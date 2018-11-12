@@ -23,7 +23,8 @@ public class Main {
 
         Main ch = new Main(); ch.chooseBank(num);
 
-        Main b =new Main();b.read();
+        Main b =new Main();
+        System.out.println(b.readd(2,3));
         //Workbook wbo = new HSSFWorkbook();                 // обэкт для запису
 
 
@@ -53,8 +54,7 @@ public class Main {
     private static double readd(int row, int cell) throws IOException {
         FileInputStream fis = new FileInputStream("D:/Рабочий стол/Banking.xls"); // читаю
         Workbook wbi = new HSSFWorkbook(fis);          //обэкт для читання
-        double res = wbi.getSheetAt(0).getRow(2).getCell(1).getNumericCellValue();
-        System.out.println("Вдсоток в приват банку - " + res);
+        double res = wbi.getSheetAt(0).getRow(row).getCell(cell).getNumericCellValue();
         fis.close();
         return res;
     }
@@ -62,8 +62,7 @@ public class Main {
     private static String reads(int row, int cell) throws IOException {
         FileInputStream fis = new FileInputStream("D:/Рабочий стол/Banking.xls"); // читаю
         Workbook wbi = new HSSFWorkbook(fis);          //обэкт для читання
-        String res = wbi.getSheetAt(0).getRow(2).getCell(1).getStringCellValue();
-        System.out.println("Вдсоток в приват банку - " + res);
+        String res = wbi.getSheetAt(0).getRow(row).getCell(cell).getStringCellValue();
         fis.close();
         return res;
     }
