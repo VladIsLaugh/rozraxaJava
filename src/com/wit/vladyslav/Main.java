@@ -128,7 +128,6 @@ public class Main {
         FileWriter writer = new FileWriter(filename, true);
         writer.write(name+ "\r\n");     //записуємо імя
 
-
         System.out.println("Введіть будь ласка ваш пароль");
         String pass = in.nextLine();
         writer.write(pass + "\r\n");
@@ -169,15 +168,12 @@ public class Main {
         if(!pass.equals(passdoc)){
             System.out.println("Невірний пароль, щоб спробувати ще раз натисніть 1, щоб відновити пароль натисніть 2");
             LogIn();
-            Recavery(filename);
         }
         System.out.println("Вітаю Ви війшли в систему");
         fn = filename;
     }
 
-    private static void Recavery(String filename){
-        System.out.println("Введіть ваш номер телефону");
-    }
+
 
     private static void Line(int a){
         for (int i = 1; i<=a; i++){
