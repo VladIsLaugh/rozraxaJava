@@ -24,11 +24,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Registration hi = new Registration();
         hi.hello();
-        Scanner scan = new Scanner(System.in);
-        int num = scan.nextInt();
+
 
         Main ch = new Main();
-        ch.chooseBank(num);
+        int num = ch.chooseBank();
 
         Main b =new Main();
 
@@ -58,23 +57,27 @@ public class Main {
         return res;
     }
 
-    private static void chooseBank(int a) {
-        switch (a) {
+    private static int chooseBank() {
+        Scanner scan = new Scanner(System.in);
+        int num = scan.nextInt();
+        switch (num) {
             case 1:
-                System.out.println("1");
+                System.out.println("Ви обрали ПриватБанк.");
                 break;
 
             case 2:
-                System.out.println("2");
+                System.out.println("Ви обрали Альфа Банк");
                 break;
 
             case 3:
-                System.out.println("3");
+                System.out.println("Ви обрали УкрСибБанк");
                 break;
 
             default:
-                System.out.println("4");
+                System.out.println("Невірно набраний номер, Введіть будьласка ще раз");
+                chooseBank();
         }
+        return num;
     }
 
 }

@@ -21,11 +21,11 @@ public class TakeKredit extends Main{
         int year = in.nextInt();
 
         double CherezGod = sum + year*sum * readd(2,num+1);
-        System.out.println("Сума яку потрібно буде віддати:  " + CherezGod);
+        System.out.println("Сума яку потрібно буде віддати:  " + (double)Math.round(CherezGod * 100d) / 100d + " грн");
 
         writer.write(CherezGod + "\r\n");
         double vMisyaz = CherezGod / (year*12);
-        System.out.println("Сума яку треба сплачувати щомісяця:  " + vMisyaz);
+        System.out.println("Сума яку треба сплачувати щомісяця:  " + (double)Math.round(vMisyaz * 100d) / 100d + " грн");
         writer.write(vMisyaz + "\r\n");
         writer.flush();
         writer.close();
