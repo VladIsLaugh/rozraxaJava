@@ -6,7 +6,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import java.io.*;
 import java.util.Scanner;
 
-public class Registration extends Main{
+public class Registration{
     public static void hello() throws IOException {
 
         System.out.println("Вас вітає програма мій помічник який допооже вам взяти кредит за найвигіднішими умовами");
@@ -82,7 +82,7 @@ public class Registration extends Main{
             LogIn();
         }
         System.out.println("Вітаю Ви війшли в систему");
-        fn = filename;
+        Main.SetFN(filename);
     }
 
 }

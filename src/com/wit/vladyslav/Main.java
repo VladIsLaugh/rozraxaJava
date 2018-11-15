@@ -13,8 +13,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static String fn;
+    private static String fn;
 
+    public static String GetFN(){
+        return fn;
+    }
+    public static void SetFN(String filename){
+        fn = filename;
+    }
     public static void main(String[] args) throws IOException {
         Registration hi = new Registration();
         hi.hello();
@@ -29,14 +35,14 @@ public class Main {
         double chb = b.readd(2,3);
 
 
-        Main gk = new Main();
+        TakeKredit gk = new TakeKredit();
         gk.getKridit(num);
 
 
     }
 
 
-    private static double readd(int row, int cell) throws IOException  {
+    public static double readd(int row, int cell) throws IOException  {
         FileInputStream fis = new FileInputStream("C:/Users/Владислав/Desktop/Banking.xls"); // читаю
         Workbook wbi = new HSSFWorkbook(fis);          //обэкт для читання
         double res = wbi.getSheetAt(0).getRow(row).getCell(cell).getNumericCellValue();
@@ -70,33 +76,6 @@ public class Main {
                 System.out.println("4");
         }
     }
-
-
-    private static void getKridit(int num)throws IOException{
-        System.out.println("На яку суму вам потрібен кредит?");
-        Scanner in = new Scanner(System.in);
-        Integer sum = in.nextInt();
-
-        sum.toString();
-
-        FileWriter writer = new FileWriter(fn, true);
-        writer.write(sum.toString());     //записуємо імя
-
-
-        System.out.println("На скільки років берете кредит?");
-        int year = in.nextInt();
-
-        double CherezGod = sum + year*sum * readd(2,num+1);
-        System.out.println("Сума яку потрібно буде віддати:  " + CherezGod);
-
-        writer.write(CherezGod + "\r\n");
-        double vMisyaz = CherezGod / (year*12);
-        System.out.println("Сума яку треба сплачувати щомісяця:  " + vMisyaz);
-        writer.write(vMisyaz + "\r\n");
-        writer.flush();
-        writer.close();
-    }
-
 
 }
 
