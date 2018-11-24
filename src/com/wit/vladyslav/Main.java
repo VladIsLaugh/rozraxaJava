@@ -1,13 +1,11 @@
 package com.wit.vladyslav;
 
-import jdk.nashorn.internal.ir.IfNode;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import javax.imageio.stream.FileImageOutputStream;
 import java.io.*;
 import java.util.Scanner;
 
@@ -49,13 +47,6 @@ public class Main {
         return res;
     }
 
-    private static String reads(int row, int cell) throws IOException {
-        FileInputStream fis = new FileInputStream("C:/Users/Владислав/Desktop/Banking.xls"); // читаю
-        Workbook wbi = new HSSFWorkbook(fis);          //обэкт для читання
-        String res = wbi.getSheetAt(0).getRow(row).getCell(cell).getStringCellValue();
-        fis.close();
-        return res;
-    }
 
     private static int chooseBank() {
         Scanner scan = new Scanner(System.in);

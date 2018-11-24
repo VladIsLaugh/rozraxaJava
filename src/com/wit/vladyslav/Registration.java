@@ -1,7 +1,5 @@
 package com.wit.vladyslav;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.*;
 import java.util.Scanner;
@@ -78,7 +76,7 @@ public class Registration{
         String passdoc = scaner.nextLine();
 
         if(!pass.equals(passdoc)){
-            System.out.println("Невірний пароль, щоб спробувати ще раз натисніть 1, щоб відновити пароль натисніть 2");
+            //System.out.println("Невірний пароль, щоб спробувати ще раз натисніть 1, щоб відновити пароль натисніть 2");
             LogIn();
         }
         System.out.println("Вітаю Ви війшли в систему");
