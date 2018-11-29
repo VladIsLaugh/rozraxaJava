@@ -2,54 +2,41 @@ package com.wit.vladyslav;
 
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class Registration{
-    public static void hello() throws IOException {
+public class Registration extends Main{
 
-        System.out.println("Вас вітає програма мій помічник який допооже вам взяти кредит за найвигіднішими умовами");
-        System.out.println("Щоб зареєструватись в помічнику натисніть 1, щоб зайти у свій обліковий запис натисніть 2");
-        Scanner i = new Scanner(System.in);
-        int w = i.nextInt();
-        if(w == 1){
-            Registr();
-        }
-        else if(w == 2){
-            LogIn();
-        }
-        else{
-            hello();
-        }
-        System.out.println("Введіть будь ласка ваше ім'я (латиницею)");
 
-        System.out.println("Оберіть банк. Приват банк натисніть 1, Альфа банк натисніть 2, УкрСиббанк натисніть 3");
-    }
-
-    private static void Registr() throws IOException{
+    public static void registr() throws IOException{
 
         System.out.println("Введіть будь ласка ваш логін (латиницею)");
         Scanner in = new Scanner(System.in);
         String name = in.nextLine();
+        fileData.add(name);
         String filename = "C:/Users/Владислав/Desktop/rozrah/" + name.toUpperCase()  + ".txt";
         if ((new File(filename)).exists()) {
             System.out.println("Ви вже реєструвались під цим логіном");
-            Registr();
+            registr();
         }
         FileWriter writer = new FileWriter(filename, true);
         writer.write(name+ "\r\n");     //записуємо імя
 
         System.out.println("Введіть будь ласка ваш пароль");
         String pass = in.nextLine();
+        fileData.add(pass);
         writer.write(pass + "\r\n");
         System.out.println("Введіть ваш номер телефону в міжнародному форматі (+380...)");
         String number = in.nextLine();
+        fileData.add(number);
         writer.write(number + "\r\n");
         System.out.println("Вітаю, ви зайшли пройшли реєстрацію в інтернет помічнику\nТепер потрібно ввійти в систему");
         writer.flush();
-        LogIn();
+        logIn();
     }
 
-    private static void LogIn() throws IOException {
+    public static void logIn() throws IOException {
 
         System.out.println("Введіть ваш логін");
         Scanner scname = new Scanner(System.in);
@@ -59,7 +46,7 @@ public class Registration{
 
         if (!(new File(filename)).exists()) {
             System.out.println("невірний логін");
-            LogIn();
+            logIn();
         }
 
 
@@ -76,11 +63,29 @@ public class Registration{
         String passdoc = scaner.nextLine();
 
         if(!pass.equals(passdoc)){
-            //System.out.println("Невірний пароль, щоб спробувати ще раз натисніть 1, щоб відновити пароль натисніть 2");
-            LogIn();
+            System.out.println("Невірнй пароль");
+            logIn();
         }
         System.out.println("Вітаю Ви війшли в систему");
         Main.SetFN(filename);
+       // BufferedReader readerr = new BufferedReader(new FileReader(filename);
+        String line;
+        List<String> lines = new ArrayList<String>();
+        while (scaner.nextLine() != null) {
+            fileData.add(scaner.nextLine());
+        }
+    }
+
+    public static void demo(){
+        int num = 1473;
+        String fName = "Demo" + num + ".txt";
+        File f = new File(fName);
+        if(!f.isFile()) {
+            System.out.println("2");
+            demo();
+
+        }
+        System.out.println("1");
     }
 
 }

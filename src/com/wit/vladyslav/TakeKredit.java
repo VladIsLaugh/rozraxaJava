@@ -1,34 +1,41 @@
 package com.wit.vladyslav;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static java.awt.SystemColor.menu;
+
 public class TakeKredit extends Main{
+
+
+
+
     public static void getKridit(int num)throws IOException {
         System.out.println("На яку суму вам потрібен кредит?");
         Scanner in = new Scanner(System.in);
-        Integer sum = in.nextInt();
-
-        //Main.Get();
-        sum.toString();
-
+        byte sum = in.nextByte();
         FileWriter writer = new FileWriter(Main.GetFN(), true);
-        writer.write(sum.toString());     //записуємо імя
 
 
-        System.out.println("На скільки років берете кредит?");
-        int year = in.nextInt();
+        for (int i = 0; i<5; i++){
+            Double d = readd(i,0);
+            if(sum<d){
+                System.out.println("Для вас рекомендований кредит за " + d + " грн на 10 років. Натисніть 1 щоб оформити цей кредит, або іншу клавішу щоб скасувати." );
+                byte yesno = in.nextByte();
+                if(yesno==1){
+                    fileData.add(d);
+                    writer.write(d.toString());
+                }
+                else
+                    Menu.menu();
+            }
+        }
 
-        double CherezGod = sum + year*sum * readd(2,num+1);
-        System.out.println("Сума яку потрібно буде віддати:  " + (double)Math.round(CherezGod * 100d) / 100d + " грн");
 
-        writer.write(CherezGod + "\r\n");
-        double vMisyaz = CherezGod / (year*12);
-        System.out.println("Сума яку треба сплачувати щомісяця:  " + (double)Math.round(vMisyaz * 100d) / 100d + " грн");
-        writer.write(vMisyaz + "\r\n");
         writer.flush();
         writer.close();
     }

@@ -1,5 +1,6 @@
 package com.wit.vladyslav;
 
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -7,29 +8,38 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     private static String fn;
 
-    public static String GetFN(){
+    public static String GetFN() {
         return fn;
     }
-    public static void SetFN(String filename){
+
+    public static void SetFN(String filename) {
         fn = filename;
     }
+
+    public static ArrayList fileData;
+
+
     public static void main(String[] args) throws IOException {
-        Registration hi = new Registration();
-        hi.hello();
+
+
+        hello();
+
+
 
 
         Main ch = new Main();
         int num = ch.chooseBank();
 
-        Main b =new Main();
+        Main b = new Main();
 
-        double chb = b.readd(2,3);
+        double chb = b.readd(2, 3);
 
 
         TakeKredit gk = new TakeKredit();
@@ -39,39 +49,53 @@ public class Main {
     }
 
 
-    public static double readd(int row, int cell) throws IOException  {
-        FileInputStream fis = new FileInputStream("C:/Users/Владислав/Desktop/Banking.xls"); // читаю
-        Workbook wbi = new HSSFWorkbook(fis);          //обэкт для читання
-        double res = wbi.getSheetAt(0).getRow(row).getCell(cell).getNumericCellValue();
-        fis.close();
-        return res;
+    private static void hello() throws IOException {
+        System.out.println("Вас вітає программа мій помічник. \n" +
+                "Для реєстрації натисніть 1.\n" +
+                "Для входу в свій обліковий запис натисніть 2\n" +
+                "Спробувати демо версію натисніть 3\n");
+
+
+        Scanner w = new Scanner(System.in);
+        byte menuChoise = w.nextByte();
+
     }
 
 
-    private static int chooseBank() {
-        Scanner scan = new Scanner(System.in);
-        int num = scan.nextInt();
-        switch (num) {
-            case 1:
-                System.out.println("Ви обрали ПриватБанк.");
-                break;
-
-            case 2:
-                System.out.println("Ви обрали Альфа Банк");
-                break;
-
-            case 3:
-                System.out.println("Ви обрали УкрСибБанк");
-                break;
-
-            default:
-                System.out.println("Невірно набраний номер, Введіть будьласка ще раз");
-                chooseBank();
+        public static double readd ( int row, int cell) throws IOException {
+            FileInputStream fis = new FileInputStream("C:/Users/Владислав/Desktop/Banking.xls"); // читаю
+            Workbook wbi = new HSSFWorkbook(fis);          //обэкт для читання
+            double res = wbi.getSheetAt(0).getRow(row).getCell(cell).getNumericCellValue();
+            fis.close();
+            return res;
         }
-        return num;
-    }
 
-}
+
+        private static int chooseBank () {
+            Scanner scan = new Scanner(System.in);
+            int num = scan.nextInt();
+            switch (num) {
+                case 1:
+                    System.out.println("Ви обрали ПриватБанк.");
+                    break;
+
+                case 2:
+                    System.out.println("Ви обрали Альфа Банк");
+                    break;
+
+                case 3:
+                    System.out.println("Ви обрали УкрСибБанк");
+                    break;
+
+                default:
+                    System.out.println("Невірно набраний номер, Введіть будьласка ще раз");
+                    chooseBank();
+            }
+            return num;
+        }
+
+
+    }
 
 
 
