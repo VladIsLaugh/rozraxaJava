@@ -17,6 +17,7 @@ public class FileManager {
         double res = wbi.getSheetAt(0).getRow(row).getCell(cell).getNumericCellValue();
         fis.close();
         return res;
+
     }
 
     public static void writeInFile() throws IOException{
